@@ -1,0 +1,17 @@
+body {
+  font-family: Verdana, Helvetica, sans-serif;
+  background-color: #DDDDD;
+}
+h1 {
+    font-family: Verdana, Helvetica, sans-serif;
+    text-align:center;
+}
+#front {
+    margin-left:15%;
+    margin-right:15%;
+    width:70%;
+}
+
+#menu {margin-left:15%;  margin-right:15%; height:40px; position:relative; z-index:100;font-family:arial, sans-serif;  padding-left: 20px; padding-top: 7px; background: url("../images/nav.jpg") no-repeat;}
+#menu ul {padding:0;margin:0;list-style-type:none;}
+#menu li {float:left;position:relative;} 
