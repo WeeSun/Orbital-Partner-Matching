@@ -13,7 +13,7 @@
       <ul>
 	<li> <a href="{{ home }}">{{ home_name }}</a></li>
 	<li> <a href="{{ home }}{{ policy }}">{{ policy_name }}</a></li>
-	<li> <a href="{{ home }}">{{ user_mail }}</a></li>
+	<li> <a href="{{ home }}{{ policy }}">{{ user_mail }}</a></li>
 	<li> <a href="{{ logout }}">{{ logout_name }}</a></li>
       </ul>
     </div> 
@@ -28,6 +28,16 @@
     </div> 
     {% endif %}
 
-    <img id = "front" title = "Atlantis and Columbia. Image from NASA." src="../images/pair.jpg">
+    <div>
+      <img id = "privacy" title = "Atlantis and Columbia. Image from NASA." src="../images/pair.jpg">
+      <br>
+      <p> By participating in the partner matching scheme, the data you provide to the system will be made available for viewing by other students who also register for matching. The system is restricted for use to NUS students. </p>
+      
+      <p> You may de-register at any time, removing your data from the system. </p>
+      
+      <p> All student data will be removed 2 weeks after Lift-off. </p>
+    </div>
+
+
   </body>
 </html>

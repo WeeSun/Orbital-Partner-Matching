@@ -1,17 +1,28 @@
 body {
-  font-family: Verdana, Helvetica, sans-serif;
-  background-color: #DDDDD;
+    font-family: Verdana, Helvetica, sans-serif;
+    background-color: #DDDDD;
+    font-size:12px;
+    margin-left:5%;
+    margin-right:5%;
 }
+
 h1 {
     font-family: Verdana, Helvetica, sans-serif;
     text-align:center;
 }
+
 #front {
-    margin-left:15%;
-    margin-right:15%;
-    width:70%;
+    width:100%;
 }
 
-#menu {margin-left:15%;  margin-right:15%; height:40px; position:relative; z-index:100;font-family:arial, sans-serif;  padding-left: 20px; padding-top: 7px; background: url("../images/nav.jpg") no-repeat;}
+#privacy {
+    padding:10px;
+    float:right;
+    align:right;
+    width:200px;
+}
+
+#menu {height:40px;position:relative;z-index:100;font-family:arial, sans-serif;  padding-left: 20px; padding-top: 0px; background: url("../images/nav.jpg") no-repeat;overflow-y:hidden;}
 #menu ul {padding:0;margin:0;list-style-type:none;}
-#menu li {float:left;position:relative; } 
+#menu li {padding:10;float:left;position:relative; } 
+#menu a, #menu a:visited {display:block;font-size:12px;text-decoration:none; height:40px; padding-top: 0px; line-height:25px; font-weight:bold; text-transform:uppercase; text-align:center; color:#666666}

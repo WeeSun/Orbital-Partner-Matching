@@ -5,12 +5,22 @@ api_version: 1
 threadsafe: true
 
 handlers:
+# Handler for login and redirection
+- url: /_ah/login_required
+  script: do_openid_login.app
+
 - url: /stylesheets
   static_dir: stylesheets
 
 - url: /images
   static_dir: images
 
+# All handlers for pages requiring login
+- url: /nus
+  script: nus.app
+  login: required
+
+# All remaining handlers
 - url: /.*
   script: orbitalpartner.app
 
