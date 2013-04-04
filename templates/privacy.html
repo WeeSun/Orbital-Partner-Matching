@@ -11,19 +11,20 @@
     {# Logged in #}
     <div id = "menu">
       <ul>
-	<li> <a href="{{ home }}">{{ home_name }}</a></li>
-	<li> <a href="{{ home }}{{ policy }}">{{ policy_name }}</a></li>
-	<li> <a href="{{ home }}{{ policy }}">{{ user_mail }}</a></li>
-	<li> <a href="{{ logout }}">{{ logout_name }}</a></li>
+	<li> <a href="{{ home }}/nus"> Home </a></li>
+	<li> <a href="{{ home }}/nuspolicy"> Privacy Policy</a></li>
+	<li> <a href="{{ home }}/editprofile"> Profile </a></li>
+	<li> <a href="{{ home }}/search"> Search </a></li>
+	<li> <a href="{{ logout }}"> Logout </a></li>
       </ul>
     </div> 
     {% else %}
     {# Not logged in #}
      <div id = "menu">
       <ul>
-	<li> <a href="{{ home }}">{{ home_name }}</a></li>
-	<li> <a href="{{ home }}{{ policy }}">{{ policy_name }}</a></li>
-	<li> <a href="{{ home }}{{ login }}">{{ login_name }}</a></li>
+	<li> <a href="{{ home }}"> Home </a></li>
+	<li> <a href="{{ home }}/policy"> Privacy Policy </a></li>
+	<li> <a href="{{ home }}/login"> Login </a></li>
       </ul>
     </div> 
     {% endif %}

@@ -7,8 +7,6 @@
     <h1> Orbital Partner Matching</h1>
 
     <!-- Main navigation -->
-    {% if user_mail is defined %}
-    {# Logged in #}
     <div id = "menu">
       <ul>
 	<li> <a href="{{ home }}/nus"> Home </a></li>
@@ -18,17 +16,22 @@
 	<li> <a href="{{ logout }}"> Logout </a></li>
       </ul>
     </div> 
-    {% else %}
-    {# Not logged in #}
-     <div id = "menu">
-      <ul>
-	<li> <a href="{{ home }}"> Home </a></li>
-	<li> <a href="{{ home }}/policy"> Privacy Policy </a></li>
-	<li> <a href="{{ home }}/login"> Login </a></li>
-      </ul>
-    </div> 
-    {% endif %}
-
-    <img id = "front" title = "Atlantis and Columbia. Image from NASA." src="../images/pair.jpg">
+     
+     <h2>Admin</h2>
+     
+     <form action="/admin" method="post"> 
+       <p> Select students to delete:</p>
+       <div>
+	 <table border='1'>
+	   <tr><th> Select all <input type="checkbox" name="select_all" value="all"/></th><th>Name</th><th>Email</th></tr>
+	   {% for profile in profiles %}
+	   <tr><td> <input type="checkbox" name="selected" value="{{ profile.email }}"/>
+	     <td>{{ profile.name }}</td>
+	     <td>{{ profile.email }}</td></tr>
+	   {% endfor %}
+	 </table>
+       </div>
+       <p> <input type="submit" value="Submit">
+     </form>
   </body>
 </html>
