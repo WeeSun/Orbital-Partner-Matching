@@ -23,11 +23,6 @@ handlers:
 - url: /policy
   script: orbitalpartner.app
 
-# Handler for admin
-- url: /admindisplay
-  script: nus.app
-  login: admin
-
 # All other pages require login
 - url: /.*
   script: nus.app

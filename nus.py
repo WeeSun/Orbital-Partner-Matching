@@ -26,6 +26,7 @@ class Profile(db.Model):
   orbital_level = db.StringProperty()
   orbital_country = db.StringProperty()
   preference = db.StringProperty(multiline=True)
+  admin = db.BooleanProperty()
   date = db.DateTimeProperty(auto_now_add=True)
 
 # These classes generates pages from templates
@@ -80,6 +81,7 @@ class Login(webapp2.RequestHandler):
       self.response.out.write(template.render(template_values))
     else:
       self.redirect(users.create_login_url(federated_identity='https://openid.nus.edu.sg/'))
+
 class EditProfile(webapp2.RequestHandler):
   """ Retrieves profile and prefill the form for editing """
   def get(self):
@@ -179,22 +181,30 @@ class Display(webapp2.RequestHandler):
       self.redirect(users.create_login_url(federated_identity='https://openid.nus.edu.sg/'))
 
 class AdminDisplay(webapp2.RequestHandler):
-  """ Creates page to get info for admin """
+  """ Creates page to get info for admin. Only user with admin priviledge \
+  can access. Admin priviledge after user is registered through editing \
+  the entity on the GAE admin dashboard. """
   def get(self):
-    profiles = db.GqlQuery("SELECT *"
-                           "FROM Profile "
-                           "ORDER BY date DESC")
-    
     user = users.get_current_user()
     if user:  # signed in already
-      template_values = {
-        'profiles': profiles,
-        'home': self.request.host_url,
-        'user_mail': users.get_current_user().email(),
-        'logout': users.create_logout_url(self.request.host_url),
-        } 
-      template = jinja_environment.get_template('admin.html')
-      self.response.out.write(template.render(template_values))
+      db_key =  db.Key.from_path('Profile',users.get_current_user().email())
+      profile = db.get(db_key) # Retrieve profile
+      
+      if profile.admin == True:
+        profiles = db.GqlQuery("SELECT *"
+                               "FROM Profile "
+                               "ORDER BY date DESC")
+        
+        template_values = {
+          'profiles': profiles,
+          'home': self.request.host_url,
+          'user_mail': users.get_current_user().email(),
+          'logout': users.create_logout_url(self.request.host_url),
+          } 
+        template = jinja_environment.get_template('admin.html')
+        self.response.out.write(template.render(template_values))
+      else:
+        self.redirect('/nus')
     else:
       self.redirect(users.create_login_url(federated_identity='https://openid.nus.edu.sg/'))
 
@@ -213,6 +223,7 @@ class CreateProfile(webapp2.RequestHandler):
       profile.orbital_level = self.request.get('orbital_level')
       profile.orbital_country = self.request.get('orbital_country')
       profile.preference = self.request.get('preference')   
+      profile.admin = False
       profile.put()
       self.redirect('/nus')
     else:
@@ -242,20 +253,32 @@ class Edit(webapp2.RequestHandler):
         
       
 class Admin(webapp2.RequestHandler):
-  """ Process admin request """
+  """ Process admin request. Only user with admin priviledge can access \
+  Admin priviledge after user is registered through editing the entity on\
+  the GAE admin dashboard."""
   def post(self):
-    all = self.request.get('select_all')
-    if all:
-      profiles = db.GqlQuery("SELECT *"
-                             "FROM Profile ")
+    user = users.get_current_user()
+    if user:  # signed in already
+      db_key =  db.Key.from_path('Profile',users.get_current_user().email())
+      profile = db.get(db_key) # Retrieve profile
+      
+      if profile.admin == True:
+        all = self.request.get('select_all')
+        if all:
+          profiles = db.GqlQuery("SELECT *"
+                                 "FROM Profile ")
+        else:
+          selected = self.request.get_all('selected')
+          profiles = db.GqlQuery("SELECT *"
+                                 "FROM Profile "
+                                 "WHERE email in :1",
+                                 selected)
+          db.delete(profiles)
+          self.redirect('/nus')
+      else:
+        self.redirect('/nus')
     else:
-      selected = self.request.get_all('selected')
-      profiles = db.GqlQuery("SELECT *"
-                             "FROM Profile "
-                             "WHERE email in :1",
-                             selected)
-    db.delete(profiles)
-    self.redirect('/nus')
+      self.redirect(users.create_login_url(federated_identity='https://openid.nus.edu.sg/'))
 
 
 app = webapp2.WSGIApplication([('/nus', MainPage),
