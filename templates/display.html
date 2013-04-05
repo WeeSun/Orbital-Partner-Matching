@@ -23,7 +23,7 @@
        <table border='1'>
 	 <tr><th width="50%">Name</th><th>Sex</th><th>FB/LinkedIn</th><th>Orbital Level</th><th>Working From</th></tr>
 	 {% for profile in profiles %}
-	 <tr><td>{{ profile.name }}<br> {{ profile.email }} <br> {{ profile.preference }}</td>
+	 <tr><td>{{ profile.name }}<br> <a href="mailto:{{ profile.email }}?Subject=Orbital%20Partner%20for%20{{ level }}">{{ profile.email }}</a> <br> {{ profile.preference }}</td>
 	   <td>{{ profile.sex }}</td>
 	   <td>
 	     {% if profile.fb_link != "" %}
@@ -33,7 +33,7 @@
 	     <a href="{{ profile.linkedin_link }}" target="_blank"><img height="30px" src="../images/linkedin.png"></a>
 	     {% endif %}
 	   </td>
-	   <td>{{ profile.orbital_level }}</td><td>{{ profile.orbital_country }}</td></tr>
+	   <td>{{ level }}</td><td>{{ profile.orbital_country }}</td></tr>
 	 {% endfor %}
        </table>
      </div>

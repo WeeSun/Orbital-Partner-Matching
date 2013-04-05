@@ -24,17 +24,18 @@
        <form action="/edit" method="post">       
        <p> Name: <input type="text" name="user_name" value="{{ profile.name }}" size="40">
        
-       <p>You may wish to provide links to your Facebook and/or LinkedIn page to provide more information to potential partner. 
+       <p>You may wish to provide links to your Facebook and/or LinkedIn page to provide more information to potential partner.<br> 
 	 Facebook: <input type="text" name="fb_link" value ="{{ profile.fb_link }}" size="40">
 	 LinkedIn: <input type="text" name="linkedin_link" value="{{ profile.linkedin_link }}"size="40"> 
        </p>
 
 	 <p> Sex: <input type="radio" name="sex" value="Male" {{ male_checked }}>Male  <input type="radio" name="sex" value="Female" {{ female_checked }}>Female</p>
 
-	 <p> Orbital Level:<br>
-	 <input type="radio" name="orbital_level" value="Boctok" {{ Boctok_checked }}>Boctok (Easy/Beginner)<br>
-	   <input type="radio" name="orbital_level" value="Gemini" {{ Gemini_checked }}>Gemini (Intermediate)<br>
-	   <input type="radio" name="orbital_level" value="Appollo11" {{ Appollo11_checked }}>Appollo 11 (Advanced/Difficult)</p>
+	 <p> Orbital Level (one or more):<br>
+	 <input type="checkbox" name="orbital_level" value="Boctok" {{ Boctok_checked }}>Boctok (Easy/Beginner)<br>
+	   <input type="checkbox" name="orbital_level" value="Gemini" {{ Gemini_checked }}>Gemini (Intermediate)<br>
+	   <input type="checkbox" name="orbital_level" value="Apollo11" {{ Apollo11_checked }}>Apollo 11 (Advanced/Difficult)<br>
+	   <input type="checkbox" name="orbital_level" value="Apollo11Mentoring" {{ Apollo11Mentoring_checked }}>Apollo 11 with Mentoring (Advanced/Difficult)</p>
 	 
        <p> I will be doing Orbital mostly from: <br>
 	 <select id="countries" name="orbital_country">

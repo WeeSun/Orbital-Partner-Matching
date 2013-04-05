@@ -12,80 +12,36 @@ indexes:
 
 - kind: Profile
   properties:
-  - name: email
-  - name: date
-    direction: desc
-
-- kind: Profile
-  properties:
-  - name: key_name
-  - name: date
-    direction: desc
-
-- kind: Profile
-  properties:
-  - name: orbital_country
-  - name: orbital_level
+  - name: Apollo11
   - name: sex
   - name: date
     direction: desc
 
 - kind: Profile
   properties:
-  - name: orbital_level
+  - name: Apollo11Mentoring
   - name: sex
   - name: date
     direction: desc
 
 - kind: Profile
   properties:
-  - name: sex
-  - name: date
-    direction: desc
-
-- kind: ProfileDb
-  ancestor: yes
-  properties:
-  - name: country
-  - name: level
-  - name: sex
-  - name: date
-    direction: desc
-
-- kind: ProfileDb
-  ancestor: yes
-  properties:
-  - name: date
-    direction: desc
-
-- kind: ProfileDb
-  ancestor: yes
-  properties:
-  - name: email
-  - name: date
-    direction: desc
-
-- kind: ProfileDb
-  ancestor: yes
-  properties:
-  - name: level
+  - name: Boctok
   - name: orbital_country
   - name: sex
   - name: date
     direction: desc
 
-- kind: ProfileDb
-  ancestor: yes
+- kind: Profile
   properties:
-  - name: orbital_country
-  - name: orbital_level
+  - name: Boctok
   - name: sex
   - name: date
     direction: desc
 
-- kind: ProfileDb
-  ancestor: yes
+- kind: Profile
   properties:
+  - name: Gemini
   - name: sex
   - name: date
     direction: desc

@@ -21,11 +21,13 @@
     <p> Restrict the search to the students satisfying the following:</p>
      <div>
        <form action="/display" method="post">    
-	 <p> Sex: <input type="radio" name="sex" value="Male">Male  <input type="radio" name="sex" value="Female">Female</p>
+	 <p> Sex: <input type="radio" name="sex" value="Male" checked>Male  <input type="radio" name="sex" value="Female">Female</p>
 	 <p> Orbital Level:<br>
-	 <input type="radio" name="orbital_level" value="Boctok">Boctok (Easy/Beginner)<br>
+	 <input type="radio" name="orbital_level" value="Boctok" checked>Boctok (Easy/Beginner)<br>
 	   <input type="radio" name="orbital_level" value="Gemini">Gemini (Intermediate)<br>
-	   <input type="radio" name="orbital_level" value="Appollo11">Appollo 11 (Advanced/Difficult)</p>
+	   <input type="radio" name="orbital_level" value="Apollo11">Apollo 11 (Advanced/Difficult)<br>
+	   <input type="radio" name="orbital_level" value="Apollo11Mentoring">Apollo 11 with Mentoring (Advanced/Difficult)</p>
+
        <p> Doing Orbital mostly from: <br>
 	 <select id="countries" name="orbital_country">
 	   <option value="Anywhere" selected >Anywhere</option>

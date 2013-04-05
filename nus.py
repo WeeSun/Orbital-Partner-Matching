@@ -23,7 +23,10 @@ class Profile(db.Model):
   email = db.StringProperty()
   fb_link = db.StringProperty()
   linkedin_link = db.StringProperty()
-  orbital_level = db.StringProperty()
+  Boctok = db.BooleanProperty()
+  Gemini = db.BooleanProperty()
+  Apollo11 = db.BooleanProperty()
+  Apollo11Mentoring = db.BooleanProperty()
   orbital_country = db.StringProperty()
   preference = db.StringProperty(multiline=True)
   admin = db.BooleanProperty()
@@ -93,7 +96,7 @@ class EditProfile(webapp2.RequestHandler):
       profile = db.get(db_key)
 
       if profile != None:
-        male_checked = female_checked = Boctok_checked = Gemini_checked = Appollo11_checked = "";
+        male_checked = female_checked = Boctok_checked = Gemini_checked = Apollo11_checked = Apollo11Mentoring_checked = "";
         
         # For filling in radio button for sex
         if profile.sex == 'Male':
@@ -102,12 +105,14 @@ class EditProfile(webapp2.RequestHandler):
           female_checked = 'checked'
           
         # For filling in radio button for Orbital level
-        if profile.orbital_level == 'Boctok':
+        if profile.Boctok:
           Boctok_checked = 'checked'
-        elif profile.orbital_level == 'Gemini':
+        if profile.Gemini:
           Gemini_checked = 'checked'
-        else:
-          Appollo11_checked = 'checked'
+        if profile.Apollo11:
+          Apollo11_checked = 'checked'
+        if profile.Apollo11Mentoring:
+          Apollo11Mentoring_checked = 'checked'
       
         template_values = {
           'profile': profile,
@@ -115,7 +120,8 @@ class EditProfile(webapp2.RequestHandler):
           'female_checked': female_checked,
           'Boctok_checked': Boctok_checked,
           'Gemini_checked': Gemini_checked,
-          'Appollo11_checked': Appollo11_checked,
+          'Apollo11_checked': Apollo11_checked,
+          'Apollo11Mentoring_checked': Apollo11Mentoring_checked,
           'preference': cgi.escape(profile.preference),  # html escaping
           'home': self.request.host_url,
           'user_mail': users.get_current_user().email(),
@@ -151,26 +157,20 @@ class Display(webapp2.RequestHandler):
     level = self.request.get('orbital_level')
     country = self.request.get('orbital_country')
 
-    if country == "Anywhere":
-      profiles = db.GqlQuery("SELECT *"
-                             "FROM Profile "
-                             "WHERE sex = :1 "
-                             "AND orbital_level = :2 "
-                             "ORDER BY date DESC",
-                             sex, level)
-    else:
-      profiles = db.GqlQuery("SELECT *"
-                             "FROM Profile "
-                             "WHERE sex = :1 "
-                             "AND orbital_level = :2 "
-                             "AND orbital_country = :3 "
-                             "ORDER BY date DESC",
-                             sex, level, country)
 
+    if country == "Anywhere":
+      query = "SELECT * FROM Profile WHERE sex = '" + sex + "' AND " + level \
+          + " = True ORDER BY date DESC"
+    else:
+      query = "SELECT * FROM Profile WHERE sex = '" + sex + "' AND " +\
+          level + " = True AND orbital_country = '" + country + \
+          "' ORDER BY date DESC"
+    profiles = db.GqlQuery(query)
     user = users.get_current_user()
     if user:  # signed in already
       template_values = {
         'profiles': profiles,
+        'level': level,
         'home': self.request.host_url,
         'user_mail': users.get_current_user().email(),
         'logout': users.create_logout_url(self.request.host_url),
@@ -220,7 +220,11 @@ class CreateProfile(webapp2.RequestHandler):
       profile.sex = self.request.get('sex')
       profile.fb_link = self.request.get('fb_link')
       profile.linkedin_link = self.request.get('linkedin_link')
-      profile.orbital_level = self.request.get('orbital_level')
+      levels = self.request.get_all('orbital_level')
+      profile.Boctok = ('Boctok' in levels)
+      profile.Gemini = ('Gemini' in levels)
+      profile.Apollo11 = ('Apollo11' in levels)
+      profile.Apollo11Mentoring = ('Apollo11Mentoring' in levels)
       profile.orbital_country = self.request.get('orbital_country')
       profile.preference = self.request.get('preference')   
       profile.admin = False
@@ -245,7 +249,11 @@ class Edit(webapp2.RequestHandler):
         profile.sex = self.request.get('sex')
         profile.fb_link = self.request.get('fb_link')
         profile.linkedin_link = self.request.get('linkedin_link')
-        profile.orbital_level = self.request.get('orbital_level')
+        levels = self.request.get_all('orbital_level')
+        profile.Boctok = ('Boctok' in levels)
+        profile.Gemini = ('Gemini' in levels)
+        profile.Apollo11 = ('Apollo11' in levels)
+        profile.Apollo11Mentoring = ('Apollo11Mentoring' in levels)
         profile.orbital_country = self.request.get('orbital_country')
         profile.preference = self.request.get('preference')   
         profile.put()
