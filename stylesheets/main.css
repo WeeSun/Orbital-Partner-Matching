@@ -29,5 +29,5 @@ table {
 
 #menu {height:40px;position:relative;z-index:100;font-family:arial, sans-serif;  padding-left: 20px; padding-top: 0px; background: url("../images/nav.jpg") no-repeat;background-size: 100% 35px;overflow-y:hidden;}
 #menu ul {padding:0;margin:0;list-style-type:none;}
-#menu li {padding:10;float:left;position:relative; } 
-#menu a, #menu a:visited {display:block;font-size:12px;text-decoration:none; height:40px; padding-top: 0px; line-height:25px; font-weight:bold; text-transform:uppercase; text-align:center; color:#666666}
+#menu li {padding:0;float:left;width:110px;position:relative; } 
+#menu a, #menu a:visited {display:block;font-size:12px;text-decoration:none; height:40px; padding-top: 10px; line-height:25px; font-weight:bold; text-transform:uppercase; text-align:center; color:#666666}
