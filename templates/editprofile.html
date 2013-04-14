@@ -1,24 +1,6 @@
-<html>
-  <head>
-    <title> Orbital Partner Matching</title>
-    <link type="text/css" rel="stylesheet" href="../stylesheets/main.css">
-  </head>
-  <body>
-    <h1> Orbital Partner Matching</h1>
-
-    <!-- Main navigation -->
-    <div id = "menu">
-      <ul>
-	<li> <a href="{{ home }}/nus"> Home </a></li>
-	<li> <a href="{{ home }}/nuspolicy"> Privacy Policy</a></li>
-	<li> <a href="{{ home }}/editprofile"> Profile </a></li>
-	<li> <a href="{{ home }}/search"> Search </a></li>
-	<li> <a href="{{ logout }}"> Logout </a></li>
-      </ul>
-    </div> 
-
+{% extends "base1.html" %}
+{% block content %}
      <h2>Edit Profile</h2>
-     <div>
        <p> The information you provide in your profile will be displayed to potential partner who can then contact you to discuss further.</p>
 
        <form action="/edit" method="post">       
@@ -291,9 +273,4 @@
 	 <p> Delete profile and de-register: <input type="radio" name="delete" value="No" checked>No  <input type="radio" name="delete" value="Yes" >Yes</p>
        <p> <input type="submit" value="Submit">
        </form>
-
-
-     </div>
-     
-  </body>
-</html>
+{% endblock %}

@@ -13,6 +13,14 @@ indexes:
 - kind: Profile
   properties:
   - name: Apollo11
+  - name: orbital_country
+  - name: sex
+  - name: date
+    direction: desc
+
+- kind: Profile
+  properties:
+  - name: Apollo11
   - name: sex
   - name: date
     direction: desc

@@ -1,22 +1,5 @@
-<html>
-  <head>
-    <title> Orbital Partner Matching</title>
-    <link type="text/css" rel="stylesheet" href="../stylesheets/main.css">
-  </head>
-  <body>
-    <h1> Orbital Partner Matching</h1>
-
-    <!-- Main navigation -->
-    <div id = "menu">
-      <ul>
-	<li> <a href="{{ home }}/nus"> Home </a></li>
-	<li> <a href="{{ home }}/nuspolicy"> Privacy Policy</a></li>
-	<li> <a href="{{ home }}/editprofile"> Profile </a></li>
-	<li> <a href="{{ home }}/search"> Search </a></li>
-	<li> <a href="{{ logout }}"> Logout </a></li>
-      </ul>
-    </div> 
-     
+{% extends "base1.html" %}
+{% block content %}     
      <h2>Admin</h2>
      
      <form action="/admin" method="post"> 
@@ -33,5 +16,5 @@
        </div>
        <p> <input type="submit" value="Submit">
      </form>
-  </body>
-</html>
+{% endblock %}
+

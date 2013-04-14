@@ -1,34 +1,4 @@
-<html>
-  <head>
-    <title> Orbital Partner Matching</title>
-    <link type="text/css" rel="stylesheet" href="../stylesheets/main.css">
-  </head>
-  <body>
-    <h1> Orbital Partner Matching</h1>
-
-    <!-- Main navigation -->
-    {% if user_mail is defined %}
-    {# Logged in #}
-    <div id = "menu">
-      <ul>
-	<li> <a href="{{ home }}/nus"> Home </a></li>
-	<li> <a href="{{ home }}/nuspolicy"> Privacy Policy</a></li>
-	<li> <a href="{{ home }}/editprofile"> Profile </a></li>
-	<li> <a href="{{ home }}/search"> Search </a></li>
-	<li> <a href="{{ logout }}"> Logout </a></li>
-      </ul>
-    </div> 
-    {% else %}
-    {# Not logged in #}
-     <div id = "menu">
-      <ul>
-	<li> <a href="{{ home }}"> Home </a></li>
-	<li> <a href="{{ home }}/policy"> Privacy Policy </a></li>
-	<li> <a href="{{ home }}/login"> Login </a></li>
-      </ul>
-    </div> 
-    {% endif %}
-
+{% extends "base0.html" %}
+{% block content %}  
     <img id = "front" title = "Atlantis and Columbia. Image from NASA." src="../images/pair.jpg">
-  </body>
-</html>
+{% endblock %}

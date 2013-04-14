@@ -1,35 +1,5 @@
-<html>
-  <head>
-    <title> Orbital Partner Matching</title>
-    <link type="text/css" rel="stylesheet" href="../stylesheets/main.css">
-  </head>
-  <body>
-    <h1> Orbital Partner Matching</h1>
-
-    <!-- Main navigation -->
-    {% if user_mail is defined %}
-    {# Logged in #}
-    <div id = "menu">
-      <ul>
-	<li> <a href="{{ home }}/nus"> Home </a></li>
-	<li> <a href="{{ home }}/nuspolicy"> Privacy Policy</a></li>
-	<li> <a href="{{ home }}/editprofile"> Profile </a></li>
-	<li> <a href="{{ home }}/search"> Search </a></li>
-	<li> <a href="{{ logout }}"> Logout </a></li>
-      </ul>
-    </div> 
-    {% else %}
-    {# Not logged in #}
-     <div id = "menu">
-      <ul>
-	<li> <a href="{{ home }}"> Home </a></li>
-	<li> <a href="{{ home }}/policy"> Privacy Policy </a></li>
-	<li> <a href="{{ home }}/login"> Login </a></li>
-      </ul>
-    </div> 
-    {% endif %}
-
-    <div>
+{% extends "base0.html" %}
+{% block content %}  
       <img id = "privacy" title = "Atlantis and Columbia. Image from NASA." src="../images/pair.jpg">
       <br>
       <p> By participating in the partner matching scheme, the data you provide to the system will be made available for viewing by other students who also register for matching. The system is restricted for use to NUS students. </p>
@@ -37,8 +7,8 @@
       <p> You may de-register at any time, removing your data from the system. </p>
       
       <p> All student data will be removed 2 weeks after Lift-off. </p>
-    </div>
+{% endblock %}
 
 
-  </body>
-</html>
+
+
