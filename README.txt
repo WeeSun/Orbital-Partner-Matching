@@ -1,4 +1,4 @@
-Orbital Partner Matching his is a little app I built to learn how to use 
+Orbital Partner Matching is is a little app I built to learn how to use 
 Google App Engine with Python. It is hosted at 
 http://orbitalpartner.appspot.com/ and used by NUS School of Computing
 students to find partners for the Orbital Programme.
