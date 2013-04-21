@@ -1,14 +1,16 @@
-body {
-    font-family: Verdana, Helvetica, sans-serif;
-    background-color: #DDDDD;
-    font-size:12px;
-    margin-left:5%;
-    margin-right:5%;
+
+.textcenter {
+    text-align:center;
 }
 
-h1 {
-    font-family: Verdana, Helvetica, sans-serif;
-    text-align:center;
+.imagecenter {
+    display: block;   
+    margin-left: auto;   
+    margin-right: auto;
+}
+
+.imageicon {
+    height: 30px
 }
 
 table {
@@ -16,18 +18,3 @@ table {
     font-size:12px;
 }
 
-#front {
-    width:100%;
-}
-
-#privacy {
-    padding:10px;
-    float:right;
-    align:right;
-    width:200px;
-}
-
-#menu {height:40px;position:relative;z-index:100;font-family:arial, sans-serif;  padding-left: 20px; padding-top: 0px; background: url("../images/nav.jpg") no-repeat;background-size: 100% 35px;overflow-y:hidden;}
-#menu ul {padding:0;margin:0;list-style-type:none;}
-#menu li {padding:0;float:left;width:110px;position:relative; } 
-#menu a, #menu a:visited {display:block;font-size:12px;text-decoration:none; height:40px; padding-top: 10px; line-height:25px; font-weight:bold; text-transform:uppercase; text-align:center; color:#666666}

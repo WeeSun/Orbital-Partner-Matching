@@ -15,6 +15,13 @@ handlers:
 - url: /images
   static_dir: images
 
+- url: /scripts
+  static_dir: scripts
+
+# Twitter Bootstrap
+- url: /bootstrap
+  static_dir: bootstrap
+
 # Handler for front page
 - url: /
   script: orbitalpartner.app
